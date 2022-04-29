@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="v1_3">
+      <span class="v1_6">Minimum Green Time for Vertical Lights</span
+      ><span class="v1_12">Normal Green Time for Vertical Lights</span
+      ><span class="v1_16">Yellow Duration</span
+      ><span class="v1_14">Normal Green Time for Horizontal Lights</span
+      ><span class="v1_10">Light Threshold</span
+      ><span class="v1_8">Minimum Green Time for Horizontal Lights</span
+      ><span class="v1_17">There is cars waiting at S1</span
+      ><span class="v1_18">There is cars waiting at S2</span
+      ><span class="v1_19">There is cars waiting at S3</span>
+      <input
+        type="number"
+        class="v4_2"
+        id="minimumGreenTimeHorizontal"
+        min="0"
+      /><input
+        type="number"
+        class="v4_12"
+        id="minimumGreenTimeVertical"
+        min="0"
+      /><input type="number" class="v4_15" id="lightThreshold" min="0" /><input
+        type="number"
+        class="v4_16"
+        id="yellowTime"
+        min="0"
+      /><input
+        type="number"
+        class="v4_13"
+        id="maximumGreenTimeHorizontal"
+        min="0"
+      />
+      <input
+        type="number"
+        class="v4_14"
+        id="maximumGreenTimeVertical"
+        min="0"
+      />
+        <button class="v5_17" onclick="console.log('HERE')">
+        <span class="v5_18">Submit</span></button>
+    </div>
+  </body>
+</html>
+<br /><br />
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 14px;
+  }
+  .v1_3 {
+    width: 100%;
+    height: 1024px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v1_6 {
+    width: 373px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 148px;
+    left: 141px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_12 {
+    width: 355px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 571px;
+    left: 141px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_16 {
+    width: 147px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 148px;
+    left: 730px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_14 {
+    width: 380px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 726px;
+    left: 138px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_10 {
+    width: 148px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 289px;
+    left: 730px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_8 {
+    width: 398px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 289px;
+    left: 141px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_17 {
+    width: 248px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 595px;
+    left: 718px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_18 {
+    width: 251px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 691px;
+    left: 718px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v1_19 {
+    width: 251px;
+    color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 794px;
+    left: 718px;
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v4_2 {
+    width: 401px;
+    height: 51px;
+    background: rgba(196, 196, 196, 0);
+    opacity: 1;
+    position: absolute;
+    top: 346px;
+    left: 141px;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v4_12 {
+    width: 401px;
+    height: 51px;
+    background: rgba(196, 196, 196, 0);
+    opacity: 1;
+    position: absolute;
+    top: 202px;
+    left: 141px;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v4_15 {
+    width: 401px;
+    height: 51px;
+    background: rgba(196, 196, 196, 0);
+    opacity: 1;
+    position: absolute;
+    top: 346px;
+    left: 730px;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v4_16 {
+    width: 401px;
+    height: 51px;
+    background: rgba(196, 196, 196, 0);
+    opacity: 1;
+    position: absolute;
+    top: 202px;
+    left: 730px;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v4_13 {
+    width: 401px;
+    height: 51px;
+    background: rgba(196, 196, 196, 0);
+    opacity: 1;
+    position: absolute;
+    top: 775px;
+    left: 138px;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v4_14 {
+    width: 401px;
+    height: 51px;
+    background: rgba(196, 196, 196, 0);
+    opacity: 1;
+    position: absolute;
+    top: 631px;
+    left: 138px;
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+  .v5_17 {
+  width: 401px;
+  height: 51px;
+  background: rgba(100,180,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 472px;
+  left: 730px;
+  border: 1px solid rgba(0,132,255,1);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+  .v5_18 {
+    width: 77px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 11px;
+    left: 162px;
+    font-family: Inter;
+    font-weight: Bold;
+    font-size: 22px;
+    opacity: 1;
+    text-align: left;
+  }
+</style>

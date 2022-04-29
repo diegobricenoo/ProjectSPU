@@ -72,7 +72,7 @@ void loop() {
   //Serial.println(analogRead(s1_lightSensor));
   //Serial.println(analogRead(s2_lightSensor));
   //Serial.println(analogRead(s3_lightSensor));
-  milliseconds = millis()*2;
+  milliseconds = millis();
   if(milliseconds%1000>=0 && milliseconds%1000<21 &&milliseconds/1000!=previousReading/1000){
     cycle_seconds=(cycle_seconds+1)%maxTotalTime;
     previousReading=milliseconds;
