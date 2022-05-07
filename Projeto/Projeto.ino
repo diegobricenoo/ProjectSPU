@@ -13,7 +13,7 @@ int s1_lightSensor=0;
 int s2_lightSensor=1;
 int s3_lightSensor=2;
 
-int lightThreshold=100;
+int lightThreshold=55;
 
 int minimumGreenTimeS3=5;
 int minimumGreenTimeS1S2=5;
@@ -77,6 +77,9 @@ void loop() {
     cycle_seconds=(cycle_seconds+1)%maxTotalTime;
     previousReading=milliseconds;
     Serial.println(cycle_seconds);
+//Serial.println(carsAtS1);
+  //Serial.println(carsAtS2);
+  //Serial.println(carsAtS3);
     carsAtS1=false;
     carsAtS2=false;
     carsAtS3=false;
@@ -94,7 +97,7 @@ void loop() {
     }
   }
   
-  if(digitalRead(s1_s2_green)==HIGH && carsAtS3 && !(carsAtS1||carsAtS2)){
+  if(digitalRead(s1_s2_green)==HIGH && carsAtS3 && !carsAtS1 && !carsAtS2){
     if(cycle_seconds>greenS1S2_startTime+minimumGreenTimeS1S2){
       cycle_seconds=yellowS1S2_startTime;
     }
@@ -115,9 +118,9 @@ void loop() {
       //timeSum=yellowS3_startTime-cycle_seconds;
         cycle_seconds=yellowS3_startTime;
       }
-    }
     else{
       buttonPressed=true;
+    }
     }
   }
   //cycle_seconds=(milliseconds%32000)/1000;
