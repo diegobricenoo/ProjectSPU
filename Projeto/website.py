@@ -10,6 +10,7 @@
 
 import serial
 from flask import Flask, render_template
+import sys
 
 app = Flask(__name__)
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
@@ -20,7 +21,7 @@ if __name__=='__main__':
         # ser.write(b"Hello from Raspberry Pi!\n")
         if ser.in_waiting>0:
             line = ser.readline().decode('utf-8').rstrip()
-            print(line)
+            print(line, file=sys.stderr)
 
 
 @app.route('/')
