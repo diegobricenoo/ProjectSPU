@@ -26,4 +26,5 @@ if __name__=='__main__':
 
 @app.route('/')
 def hello():
+    print("HERE", file=sys.stderr)
     return render_template('index.html')
