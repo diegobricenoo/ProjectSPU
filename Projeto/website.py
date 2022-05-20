@@ -8,7 +8,6 @@
 # def hello():
 #     return 'Hello, World!'
 
-import imp
 import serial
 from flask import Flask, render_template
 import sys
@@ -25,6 +24,23 @@ def before_first_request_func():
         if ser.in_waiting>0:
             line = ser.readline().decode('latin-1').rstrip()
             print(line, file=sys.stderr)
+
+
+def run_app():
+    app.run(debug=False, threaded=True)
+
+def while_function():
+    while True:
+        # ser.write(b"Hello from Raspberry Pi!\n")
+        if ser.in_waiting>0:
+            line = ser.readline().decode('latin-1').rstrip()
+            print(line, file=sys.stderr)
+
+if __name__ == "__main__":
+    first_thread = threading.Thread(target=run_app)
+    second_thread = threading.Thread(target=while_function)
+    first_thread.start()
+    second_thread.start()
 
 # @app.before_first_request
 # def before_first_request_func():
