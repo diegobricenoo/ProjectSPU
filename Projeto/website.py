@@ -27,7 +27,7 @@ ser.reset_input_buffer()
 
 
 def run_app():
-    app.run(debug=False, threaded=True)
+    app.run(host='0.0.0.0',debug=False, threaded=True)
 
 def while_function():
     while True:
