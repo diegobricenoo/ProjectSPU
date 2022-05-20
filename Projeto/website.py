@@ -33,7 +33,7 @@ def while_function():
     while True:
         # ser.write(b"Hello from Raspberry Pi!\n")
         if ser.in_waiting>0:
-            line = ser.readline().decode('utf-8').rstrip()
+            line = ser.readline().decode('latin-1').rstrip()
             print(line, file=sys.stderr)
 
 if __name__ == "__main__":
@@ -41,6 +41,14 @@ if __name__ == "__main__":
     second_thread = threading.Thread(target=while_function)
     first_thread.start()
     second_thread.start()
+    
+
+@app.route('/')
+def hello():
+    # state = app.config['STATE']
+    # counter = state.get(counter)
+    # print("HERE", file=sys.stderr)
+    return render_template('index.html')
 
 # @app.before_first_request
 # def before_first_request_func():
@@ -78,10 +86,3 @@ if __name__ == "__main__":
 #     def set(self, key, value):
 #         with self.lock:
 #             self.state[key] = value
-
-@app.route('/')
-def hello():
-    # state = app.config['STATE']
-    # counter = state.get(counter)
-    # print("HERE", file=sys.stderr)
-    return render_template('index.html')
