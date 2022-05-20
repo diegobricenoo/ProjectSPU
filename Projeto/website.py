@@ -23,7 +23,7 @@ def before_first_request_func():
     while True:
         # ser.write(b"Hello from Raspberry Pi!\n")
         if ser.in_waiting>0:
-            line = ser.readline().decode('utf-8').rstrip()
+            line = ser.readline().decode('latin-1').rstrip()
             print(line, file=sys.stderr)
 
 # @app.before_first_request
