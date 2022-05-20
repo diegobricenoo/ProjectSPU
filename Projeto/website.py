@@ -26,10 +26,6 @@ app = Flask(__name__)
 #             print(line, file=sys.stderr)
 
 
-# @app.route('/')
-# def hello():
-#     print("HERE", file=sys.stderr)
-#     return render_template('index.html')
 
 
 def webserver(state):
@@ -61,3 +57,8 @@ class SharedState():
     def set(self, key, value):
         with self.lock:
             self.state[key] = value
+            
+@app.route('/')
+def hello():
+    # print("HERE", file=sys.stderr)
+    return render_template('index.html')
