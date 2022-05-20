@@ -35,7 +35,7 @@ int timeSum;
 bool buttonPressed=false;
 
 void setup(){
-  Serial.begin(9600);
+  Serial.begin(57600);
   pinMode(s1_s2_red, OUTPUT);
   pinMode(s1_s2_yellow, OUTPUT);
   pinMode(s1_s2_green, OUTPUT);
