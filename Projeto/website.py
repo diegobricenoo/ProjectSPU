@@ -57,8 +57,10 @@ class SharedState():
     def set(self, key, value):
         with self.lock:
             self.state[key] = value
-            
+
 @app.route('/')
 def hello():
+    state = app.config['STATE']
+    counter = state.get(counter)
     # print("HERE", file=sys.stderr)
     return render_template('index.html')
