@@ -33,7 +33,7 @@ def while_function():
     while True:
         # ser.write(b"Hello from Raspberry Pi!\n")
         if ser.in_waiting>0:
-            line = ser.readline().decode('latin-1').rstrip()
+            line = ser.readline().decode('latin-1').decode('utf-8').rstrip()
             print(line, file=sys.stderr)
 
 if __name__ == "__main__":
