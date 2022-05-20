@@ -14,7 +14,7 @@ import sys
 import threading
 
 app = Flask(__name__)
-ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser = serial.Serial('/dev/ttyACM0', 57600, timeout=1)
 ser.reset_input_buffer()
 
 # @app.before_first_request
@@ -33,7 +33,7 @@ def while_function():
     while True:
         # ser.write(b"Hello from Raspberry Pi!\n")
         if ser.in_waiting>0:
-            line = ser.readline().decode('latin-1').decode('utf-8').rstrip()
+            line = ser.readline().decode('latin-1').rstrip()
             print(line, file=sys.stderr)
 
 if __name__ == "__main__":
