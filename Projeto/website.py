@@ -14,7 +14,7 @@ import sys
 import threading
 
 app = Flask(__name__)
-app.config(TEMPLATES_AUTO_RELOAD=True)
+app.config.update(TEMPLATES_AUTO_RELOAD=True)
 ser = serial.Serial('/dev/ttyACM0', 57600, timeout=1)
 ser.reset_input_buffer()
 
