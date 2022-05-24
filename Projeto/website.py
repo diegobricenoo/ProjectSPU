@@ -9,7 +9,7 @@
 #     return 'Hello, World!'
 
 import serial
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import sys
 import threading
 
@@ -43,11 +43,16 @@ if __name__ == "__main__":
     second_thread.start()
     
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def hello():
     # state = app.config['STATE']
     # counter = state.get(counter)
     # print("HERE", file=sys.stderr)
+    if request.method == 'POST':
+        var=request.form["test"]
+        print(var)
+        return "success"
+
     return render_template('index.html')
 
 # @app.before_first_request
