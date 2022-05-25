@@ -1,63 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- <link
+
+<head>
+  <!-- <link
       href="https://fonts.googleapis.com/css?family=Arial&display=swap"
       rel="stylesheet"
     /> -->
-  </head>
-  <body>
-    <div class="v1_3">
-      <span class="v1_6" name="test">Minimum Green Time for Vertical Lights</span
-      ><span class="v1_12">Normal Green Time for Vertical Lights</span
-      ><span class="v1_16">Yellow Duration</span
-      ><span class="v1_14">Normal Green Time for Horizontal Lights</span
-      ><span class="v1_10">Light Threshold</span
-      ><span class="v1_8">Minimum Green Time for Horizontal Lights</span
-      ><span class="v1_17">There is cars waiting at S1</span
-      ><span class="v1_18">There is cars waiting at S2</span
-      ><span class="v1_19">There is cars waiting at S3</span>
-      <form name="configForm" method="POST">
-      <input
-        type="number"
-        class="v4_2"
-        id="minimumGreenTimeHorizontal"
-        min="0"
-      /><input
-        type="number"
-        class="v4_12"
-        id="minimumGreenTimeVertical"
-        min="0"
-      /><input type="number" class="v4_15" id="lightThreshold" min="0" /><input
-        type="number"
-        class="v4_16"
-        id="yellowTime"
-        min="0"
-      /><input
-        type="number"
-        class="v4_13"
-        id="maximumGreenTimeHorizontal"
-        min="0"
-      />
-      <input
-        type="number"
-        class="v4_14"
-        id="maximumGreenTimeVertical"
-        min="0"
-      />
-        <input class="v5_17" type="submit" value="Submit">
-        </form>
-    </div>
-  </body>
+</head>
+
+<body>
+  <div class="v1_3">
+    <span class="v1_6" name="test">Minimum Green Time for Vertical Lights</span><span class="v1_12">Normal Green Time
+      for Vertical Lights</span><span class="v1_16">Yellow Duration</span><span class="v1_14">Normal Green Time for
+      Horizontal Lights</span><span class="v1_10">Light Threshold</span><span class="v1_8">Minimum Green Time for
+      Horizontal Lights</span><span class="v1_17">There is cars waiting at S1</span><span class="v1_18">There is cars
+      waiting at S2</span><span class="v1_19">There is cars waiting at S3</span>
+    <form name="configForm" method="POST">
+      <input type="number" class="v4_2" id="minimumGreenTimeHorizontal" min="0" value="0" />
+      <input type="number" class="v4_12" id="minimumGreenTimeVertical" min="0" value="0"/>
+      <input type="number" class="v4_15" id="lightThreshold" min="0" value="0"/>
+      <input type="number" class="v4_16" id="yellowTime" min="0" value="0"/>
+      <input type="number" class="v4_13" id="maximumGreenTimeHorizontal" min="0" value="0"/>
+      <input type="number" class="v4_14" id="maximumGreenTimeVertical" min="0" value="0"/>
+      <input class="v5_17" type="submit" value="Submit" />
+    </form>
+  </div>
+</body>
+
 </html>
 <br /><br />
 <style>
   * {
     box-sizing: border-box;
   }
+
   body {
     font-size: 14px;
   }
+
   .v1_3 {
     width: 100%;
     height: 1024px;
@@ -68,6 +48,7 @@
     left: 0px;
     overflow: hidden;
   }
+
   .v1_6 {
     width: 373px;
     color: rgba(0, 0, 0, 1);
@@ -80,6 +61,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_12 {
     width: 355px;
     color: rgba(0, 0, 0, 1);
@@ -92,6 +74,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_16 {
     width: 147px;
     color: rgba(0, 0, 0, 1);
@@ -104,6 +87,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_14 {
     width: 380px;
     color: rgba(0, 0, 0, 1);
@@ -116,6 +100,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_10 {
     width: 148px;
     color: rgba(0, 0, 0, 1);
@@ -128,6 +113,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_8 {
     width: 398px;
     color: rgba(0, 0, 0, 1);
@@ -140,6 +126,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_17 {
     width: 248px;
     color: rgba(0, 0, 0, 1);
@@ -152,6 +139,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_18 {
     width: 251px;
     color: rgba(0, 0, 0, 1);
@@ -164,6 +152,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v1_19 {
     width: 251px;
     color: rgba(0, 0, 0, 1);
@@ -176,6 +165,7 @@
     opacity: 1;
     text-align: left;
   }
+
   .v4_2 {
     width: 401px;
     height: 51px;
@@ -191,6 +181,7 @@
     border-bottom-right-radius: 15px;
     overflow: hidden;
   }
+
   .v4_12 {
     width: 401px;
     height: 51px;
@@ -206,6 +197,7 @@
     border-bottom-right-radius: 15px;
     overflow: hidden;
   }
+
   .v4_15 {
     width: 401px;
     height: 51px;
@@ -221,6 +213,7 @@
     border-bottom-right-radius: 15px;
     overflow: hidden;
   }
+
   .v4_16 {
     width: 401px;
     height: 51px;
@@ -236,6 +229,7 @@
     border-bottom-right-radius: 15px;
     overflow: hidden;
   }
+
   .v4_13 {
     width: 401px;
     height: 51px;
@@ -251,6 +245,7 @@
     border-bottom-right-radius: 15px;
     overflow: hidden;
   }
+
   .v4_14 {
     width: 401px;
     height: 51px;
@@ -266,31 +261,33 @@
     border-bottom-right-radius: 15px;
     overflow: hidden;
   }
+
   .v5_17 {
-  width: 401px;
-  height: 51px;
-  background: rgba(100,180,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 472px;
-  left: 730px;
-  border: 1px solid rgba(0,132,255,1);
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  overflow: hidden;
-  cursor: poArial;
-    color: rgba(255,255,255,1);
+    width: 401px;
+    height: 51px;
+    background: rgba(100, 180, 255, 1);
+    opacity: 1;
+    position: absolute;
+    top: 472px;
+    left: 730px;
+    border: 1px solid rgba(0, 132, 255, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+    cursor: poArial;
+    color: rgba(255, 255, 255, 1);
     font-family: Arial;
     font-weight: Bold;
     font-size: 22px;
     opacity: 1;
     text-align: center;
-}
+  }
+
   .v5_18 {
     width: 77px;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     position: absolute;
     top: 11px;
     left: 162px;
