@@ -28,44 +28,51 @@ ser.reset_input_buffer()
 
 
 def run_app():
-    app.run(host='0.0.0.0',debug=True)#, threaded=True,use_reloader=False
+    app.run(host='0.0.0.0', debug=True)  # , threaded=True,use_reloader=False
+
 
 def while_function():
     while True:
         # ser.write(b"Hello from Raspberry Pi!\n")
-        if ser.in_waiting>0:
-            line = ser.readline().decode('latin-1').rstrip()
+        if ser.in_waiting > 0:
+            line = ser.readline().decode('utf-8').rstrip()
             print(line, file=sys.stderr)
 
-# if __name__ == "__main__":
-#     # first_thread = threading.Thread(target=run_app)
-#     second_thread = threading.Thread(target=while_function)
-#     # first_thread.start()
-#     # second_thread.start()
-#     app.run(host='0.0.0.0',debug=True)
-    
 
-@app.route('/')
+@app.route('/', methods=["POST", "GET"])
 def hello():
-    return render_template('index.html')
     # state = app.config['STATE']
     # counter = state.get(counter)
     # print("HERE", file=sys.stderr)
+    formValues={"minimumGreenTimeHorizontal":0,
+    "minimumGreenTimeVertical":0,
+    "lightThreshold":0,
+    "yellowTime":0,
+    "maximumGreenTimeHorizontal":0,
+    "maximumGreenTimeVertical":0}
     if request.method == 'POST':
-        var=request.form["test"]
-        print(var)
-        return "success"
+        formValues={"minimumGreenTimeHorizontal":request.form.get('minimumGreenTimeHorizontal'),
+        "minimumGreenTimeVertical":request.form.get('minimumGreenTimeVertical'),
+        "lightThreshold":request.form.get('lightThreshold'),
+        "yellowTime":request.form.get('yellowTime'),
+        "maximumGreenTimeHorizontal":request.form.get('maximumGreenTimeHorizontal'),
+        "maximumGreenTimeVertical":request.form.get('maximumGreenTimeVertical')}
 
-    return render_template('index.html')
+    return render_template('index.html', minimumGreenTimeHorizontal=formValues["minimumGreenTimeHorizontal"],
+                               minimumGreenTimeVertical=formValues["minimumGreenTimeVertical"], 
+                               lightThreshold=formValues["lightThreshold"], 
+                               yellowTime=formValues["yellowTime"], 
+                               maximumGreenTimeHorizontal=formValues["maximumGreenTimeHorizontal"], 
+                               maximumGreenTimeVertical=formValues["maximumGreenTimeVertical"])
+
 
 if __name__ == "__main__":
     # first_thread = threading.Thread(target=run_app)
     second_thread = threading.Thread(target=while_function)
     # first_thread.start()
-    # second_thread.start()
-    app.run(host='0.0.0.0',debug=True)
+    second_thread.start()
+    app.run(host='0.0.0.0', debug=True)
 
 # @app.before_first_request
 # def before_first_request_func():
 #     print("This function will run once")
-
