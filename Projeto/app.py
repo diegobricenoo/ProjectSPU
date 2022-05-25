@@ -41,7 +41,7 @@ if __name__ == "__main__":
     # first_thread = threading.Thread(target=run_app)
     second_thread = threading.Thread(target=while_function)
     # first_thread.start()
-    second_thread.start()
+    # second_thread.start()
     app.run(host='0.0.0.0',debug=True)
     
 
