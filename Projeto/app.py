@@ -45,7 +45,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0',debug=True)
     
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def hello():
     return render_template('index.html')
     # state = app.config['STATE']
