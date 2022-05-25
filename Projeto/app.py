@@ -28,7 +28,7 @@ ser.reset_input_buffer()
 
 
 def run_app():
-    app.run(host='0.0.0.0',debug=True, threaded=True,use_reloader=False)
+    app.run(host='0.0.0.0',debug=True)#, threaded=True,use_reloader=False
 
 def while_function():
     while True:
@@ -60,35 +60,3 @@ def hello():
 # def before_first_request_func():
 #     print("This function will run once")
 
-
-
-
-# def webserver(state):
-#     app.config['STATE'] = state
-#     # If running on, say, a Raspberry Pi, use 0.0.0.0 so that
-#     # you can connect to the web server from your intranet.
-#     app.run(host='0.0.0.0', use_reloader=False, debug=True)
-
-# def main():
-#     state = SharedState()
-#     web_thread = threading.Thread(target=webserver, args=(state,))
-#     web_thread.start()
-
-#     state.set('counter', 0)
-#     while True:
-#         # Do whatever you want in the foreground thread
-#         state.set('counter', state.get('counter') + 1)
-#         print(state.get('counter'), file=sys.stderr)
-
-# class SharedState():
-#     def __init__(self):
-#         self.lock = threading.Lock()
-#         self.state = dict()
-
-#     def get(self, key):
-#         with self.lock:
-#             return self.state.get(key)
-
-#     def set(self, key, value):
-#         with self.lock:
-#             self.state[key] = value
