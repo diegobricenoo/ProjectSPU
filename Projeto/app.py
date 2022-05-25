@@ -37,12 +37,12 @@ def while_function():
             line = ser.readline().decode('latin-1').rstrip()
             print(line, file=sys.stderr)
 
-if __name__ == "__main__":
-    # first_thread = threading.Thread(target=run_app)
-    second_thread = threading.Thread(target=while_function)
-    # first_thread.start()
-    # second_thread.start()
-    app.run(host='0.0.0.0',debug=True)
+# if __name__ == "__main__":
+#     # first_thread = threading.Thread(target=run_app)
+#     second_thread = threading.Thread(target=while_function)
+#     # first_thread.start()
+#     # second_thread.start()
+#     app.run(host='0.0.0.0',debug=True)
     
 
 @app.route('/')
@@ -57,6 +57,13 @@ def hello():
         return "success"
 
     return render_template('index.html')
+
+if __name__ == "__main__":
+    # first_thread = threading.Thread(target=run_app)
+    second_thread = threading.Thread(target=while_function)
+    # first_thread.start()
+    # second_thread.start()
+    app.run(host='0.0.0.0',debug=True)
 
 # @app.before_first_request
 # def before_first_request_func():
