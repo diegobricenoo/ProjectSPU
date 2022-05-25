@@ -47,6 +47,7 @@ if __name__ == "__main__":
 
 @app.route('/', methods=['POST', 'GET'])
 def hello():
+    return render_template('index.html')
     # state = app.config['STATE']
     # counter = state.get(counter)
     # print("HERE", file=sys.stderr)
