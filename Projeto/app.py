@@ -38,10 +38,11 @@ def while_function():
             print(line, file=sys.stderr)
 
 if __name__ == "__main__":
-    first_thread = threading.Thread(target=run_app)
+    # first_thread = threading.Thread(target=run_app)
     second_thread = threading.Thread(target=while_function)
-    first_thread.start()
+    # first_thread.start()
     second_thread.start()
+    app.run(host='0.0.0.0',debug=True)
     
 
 @app.route('/', methods=['POST', 'GET'])
