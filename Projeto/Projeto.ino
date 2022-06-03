@@ -9,11 +9,11 @@ int s3_red = 10;
 int p3_green = 11;
 int p3_red = 12;
 
-int s1_lightSensor=0;
-int s2_lightSensor=1;
-int s3_lightSensor=2;
+int s1_lightSensor=1;
+int s2_lightSensor=5;
+int s3_lightSensor=3;
 
-int lightThreshold=55;
+int lightThreshold=50;
 
 int minimumGreenTimeS3=5;
 int minimumGreenTimeS1S2=5;
@@ -33,6 +33,9 @@ unsigned long milliseconds,previousReading=0;
 unsigned int cycle_seconds;
 int timeSum;
 bool buttonPressed=false;
+
+String data="";
+String carsWaitingData="";
 
 void setup(){
   Serial.begin(57600);
@@ -66,7 +69,48 @@ void setup(){
   //Serial.println(greenS3_startTime);
   //Serial.println(yellowS3_startTime);
   //Serial.println(redS3_startTime);
+ 
 }
+
+void parseWebsiteInput(String str){
+  
+  String strs[6];
+  int StringCount = 0;
+  while (str.length() > 0)
+  {
+    int index = str.indexOf('-');
+    if (index == -1) // No space found
+    {
+      strs[StringCount++] = str;
+      break;
+    }
+    else
+    {
+      strs[StringCount++] = str.substring(0, index);
+      str = str.substring(index+1);
+    }
+  }
+
+  minimumGreenTimeS3 = strs[0].toInt();
+  minimumGreenTimeS1S2 = strs[1].toInt();
+  lightThreshold = strs[2].toInt();
+  yellowTime = strs[3].toInt();
+  intermittentTime=yellowTime;
+  maximumGreenTimeS3 = strs[4].toInt();
+  maximumGreenTimeS1S2 = strs[5].toInt();
+  
+  greenS1S2_startTime=0;
+  yellowS1S2_startTime=greenS1S2_startTime+maximumGreenTimeS1S2;
+  redS1S2_startTime=yellowS1S2_startTime+yellowTime;
+  intermittentP3_startTime=yellowS1S2_startTime;
+  greenS3_startTime=redS1S2_startTime;
+  yellowS3_startTime=greenS3_startTime+maximumGreenTimeS3;
+  redS3_startTime=yellowS3_startTime+yellowTime;
+  maxTotalTime=maximumGreenTimeS1S2+maximumGreenTimeS3+yellowTime+intermittentTime;
+//  Serial.println(maxTotalTime);
+  
+}
+
 
 void loop() {
   //Serial.println(analogRead(s1_lightSensor));
@@ -74,9 +118,34 @@ void loop() {
   //Serial.println(analogRead(s3_lightSensor));
   milliseconds = millis();
   if(milliseconds%1000>=0 && milliseconds%1000<21 &&milliseconds/1000!=previousReading/1000){
-    cycle_seconds=(cycle_seconds+1)%maxTotalTime;
+    cycle_seconds++;
+    cycle_seconds%=maxTotalTime;
     previousReading=milliseconds;
+  if (Serial.available() > 0) {
+    data = Serial.readStringUntil('\n');
+    parseWebsiteInput(data);
+    cycle_seconds = 0;
+    
+//  Serial.println(minimumGreenTimeS3);
+//  Serial.println(minimumGreenTimeS1S2);
+//  Serial.println(lightThreshold);
+//  Serial.println(yellowTime);
+//  Serial.println(maximumGreenTimeS3);
+//  Serial.println(maximumGreenTimeS1S2);
+  }
+//    Serial.print("You sent me: ");
+//    Serial.println(data);
+    char carsWaitingData[25];
+  carsWaitingData[0] = '\0';
+
+  strcat(carsWaitingData, carsAtS1?"1":"0");
+  strcat(carsWaitingData, "-");
+  strcat(carsWaitingData, carsAtS2?"1":"0");
+  strcat(carsWaitingData, "-");
+  strcat(carsWaitingData, carsAtS3?"1":"0");
+//    carsWaitingData= carsAtS1+"-"+carsAtS2+"-"+carsAtS3;
     Serial.println(cycle_seconds);
+    Serial.println(carsWaitingData);
 //Serial.println(carsAtS1);
   //Serial.println(carsAtS2);
   //Serial.println(carsAtS3);
@@ -84,7 +153,12 @@ void loop() {
     carsAtS2=false;
     carsAtS3=false;
   }
-  
+//  Serial.println("S1");
+//  Serial.println(analogRead(s1_lightSensor));
+//  Serial.println("S2");
+//  Serial.println(analogRead(s2_lightSensor));
+//  Serial.println("S3");
+//  Serial.println(analogRead(s3_lightSensor));
   carsAtS1= carsAtS1 || analogRead(s1_lightSensor)<lightThreshold;
   carsAtS2= carsAtS2 || analogRead(s2_lightSensor)<lightThreshold;
   carsAtS3= carsAtS3 || analogRead(s3_lightSensor)<lightThreshold;
