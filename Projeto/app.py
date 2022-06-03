@@ -5,7 +5,7 @@ import threading
 
 app = Flask(__name__)
 app.config.update(TEMPLATES_AUTO_RELOAD=True)
-ser = serial.Serial('/dev/ttyACM1', 57600, timeout=1)
+ser = serial.Serial('/dev/ttyACM0', 57600, timeout=1)
 ser.reset_input_buffer()
 
 carsWaitingS1 = "There is NO cars waiting at S1"
@@ -14,10 +14,7 @@ carsWaitingS3 = "There is NO cars waiting at S3"
 
 formValues = {"minimumGreenTimeHorizontal": 5,
               "minimumGreenTimeVertical": 5,
-              "lightThreshold": 
-              
-              
-              ,
+              "lightThreshold": 50,
               "yellowTime": 5,
               "maximumGreenTimeHorizontal": 10,
               "maximumGreenTimeVertical": 10}
@@ -47,9 +44,9 @@ def while_function():
                         1] == '1' else "There is NO cars waiting at S2"
                     carsWaitingS3 = "There is cars waiting at S3" if lineSplit[
                         2] == '1' else "There is NO cars waiting at S3"
-                    print(carsWaitingS1)
-                    print(carsWaitingS2)
-                    print(carsWaitingS3)
+                    # print(carsWaitingS1)
+                    # print(carsWaitingS2)
+                    # print(carsWaitingS3)
                 except:
                     print("erro")
 
@@ -65,10 +62,10 @@ def hello():
                       "yellowTime": formValues["yellowTime"] if request.form.get('yellowTime') == "0" else request.form.get('yellowTime'),
                       "maximumGreenTimeHorizontal": formValues["maximumGreenTimeHorizontal"] if request.form.get('maximumGreenTimeHorizontal') == "0" else request.form.get('maximumGreenTimeHorizontal'),
                       "maximumGreenTimeVertical": formValues["maximumGreenTimeVertical"] if request.form.get('maximumGreenTimeVertical') == "0" else request.form.get('maximumGreenTimeVertical')}
-        print(formValues)
+        # print(formValues)
         if previousFormValues!=formValues:
-            ser.write("{}-{}-{}-{}-{}-{}".format(formValues["minimumGreenTimeHorizontal"], formValues["minimumGreenTimeVertical"], formValues["lightThreshold"],
-                    formValues["yellowTime"], formValues["maximumGreenTimeHorizontal"], formValues["maximumGreenTimeVertical"]).encode("utf-8"))
+            ser.write("{}-{}-{}-{}-{}-{}".format(formValues["minimumGreenTimeVertical"], formValues["minimumGreenTimeHorizontal"], formValues["lightThreshold"],
+                    formValues["yellowTime"], formValues["maximumGreenTimeVertical"], formValues["maximumGreenTimeHorizontal"]).encode("utf-8"))
             previousFormValues=formValues
 
     return render_template('index.html', minimumGreenTimeHorizontal=formValues["minimumGreenTimeHorizontal"],

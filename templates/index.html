@@ -2,26 +2,20 @@
 <html>
 
 <head>
-  <!-- <link
-      href="https://fonts.googleapis.com/css?family=Arial&display=swap"
-      rel="stylesheet"
-    /> -->
 </head>
-
 <body>
   <div class="v1_3">
-    <span class="v1_6" name="test">Minimum Green Time for Vertical Lights</span><span class="v1_12">Normal Green Time
-      for Vertical Lights</span><span class="v1_16">Yellow Duration</span><span class="v1_14">Normal Green Time for
-      Horizontal Lights</span><span class="v1_10">Light Threshold</span><span class="v1_8">Minimum Green Time for
-      Horizontal Lights</span><span class="v1_17">There is cars waiting at S1</span><span class="v1_18">There is cars
-      waiting at S2</span><span class="v1_19">There is cars waiting at S3</span>
-    <form name="configForm" method="POST">
-      <input type="number" class="v4_2" id="minimumGreenTimeHorizontal" min="0" value="0" />
-      <input type="number" class="v4_12" id="minimumGreenTimeVertical" min="0" value="0"/>
-      <input type="number" class="v4_15" id="lightThreshold" min="0" value="0"/>
-      <input type="number" class="v4_16" id="yellowTime" min="0" value="0"/>
-      <input type="number" class="v4_13" id="maximumGreenTimeHorizontal" min="0" value="0"/>
-      <input type="number" class="v4_14" id="maximumGreenTimeVertical" min="0" value="0"/>
+    <span class="v1_6">Minimum Green Time for Horizontal Lights (in seconds)</span><span class="v1_12">Maximum Green Time
+      for Horizontal Lights (in seconds)</span><span class="v1_16">Yellow Duration (in seconds)</span><span class="v1_14">Maximum Green Time for
+      Vertical Lights (in seconds)</span><span class="v1_10">Light Threshold</span><span class="v1_8">Minimum Green Time for
+      Vertical Lights (in seconds)</span><span class="v1_17">{{carsWaitingS1}}</span><span class="v1_18">{{carsWaitingS2}}</span><span class="v1_19">{{carsWaitingS3}}</span>
+    <form name="configForm" method="post">
+      <input type="number" class="v4_2"  name="minimumGreenTimeVertical" min="0" value="{{minimumGreenTimeVertical}}" />
+      <input type="number" class="v4_12" name="minimumGreenTimeHorizontal" min="0" value="{{minimumGreenTimeHorizontal}}"/>
+      <input type="number" class="v4_15" name="lightThreshold" min="0" value="{{lightThreshold}}"/>
+      <input type="number" class="v4_16" name="yellowTime" min="0" value="{{yellowTime}}"/>
+      <input type="number" class="v4_13" name="maximumGreenTimeVertical" min="0" value="{{maximumGreenTimeVertical}}"/>
+      <input type="number" class="v4_14" name="maximumGreenTimeHorizontal" min="0" value="{{maximumGreenTimeHorizontal}}"/>
       <input class="v5_17" type="submit" value="Submit" />
     </form>
   </div>
@@ -63,7 +57,7 @@
   }
 
   .v1_12 {
-    width: 355px;
+    width: 380px;
     color: rgba(0, 0, 0, 1);
     position: absolute;
     top: 571px;
@@ -89,7 +83,7 @@
   }
 
   .v1_14 {
-    width: 380px;
+    width: 400px;
     color: rgba(0, 0, 0, 1);
     position: absolute;
     top: 726px;
@@ -128,7 +122,7 @@
   }
 
   .v1_17 {
-    width: 248px;
+    width: 300px;
     color: rgba(0, 0, 0, 1);
     position: absolute;
     top: 595px;
@@ -141,7 +135,7 @@
   }
 
   .v1_18 {
-    width: 251px;
+    width: 300px;
     color: rgba(0, 0, 0, 1);
     position: absolute;
     top: 691px;
@@ -154,7 +148,7 @@
   }
 
   .v1_19 {
-    width: 251px;
+    width: 300px;
     color: rgba(0, 0, 0, 1);
     position: absolute;
     top: 794px;
@@ -179,6 +173,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
   }
 
@@ -195,6 +192,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
   }
 
@@ -211,6 +211,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
   }
 
@@ -227,6 +230,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
   }
 
@@ -243,6 +249,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
   }
 
@@ -259,6 +268,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
   }
 
@@ -275,6 +287,9 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial;
+    font-weight: Regular;
+    font-size: 20px;
     overflow: hidden;
     cursor: poArial;
     color: rgba(255, 255, 255, 1);
