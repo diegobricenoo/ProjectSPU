@@ -176,9 +176,11 @@ void loop() {
       cycle_seconds=yellowS1S2_startTime;
     }
   }
-  
+  //Serial.println(greenS3_startTime+minimumGreenTimeS3);
+  //Serial.println(yellowS3_startTime);
+  int minimumTimeForButtonToChangeLights=greenS3_startTime+minimumGreenTimeS3;
   //BUTTON PRESSING
-  if(buttonPressed && cycle_seconds==greenS3_startTime+minimumGreenTimeS1S2){
+  if(buttonPressed && cycle_seconds==minimumTimeForButtonToChangeLights){
     //timeSum=yellowS3_startTime-cycle_seconds;
     cycle_seconds=yellowS3_startTime;
     buttonPressed=false;
@@ -188,7 +190,7 @@ void loop() {
     delay(15); // software debounce
     if (digitalRead(button) == HIGH && digitalRead(p3_red)==HIGH) {
       // if the switch is HIGH, ie. pushed down - change the lights!
-      if (cycle_seconds>=greenS3_startTime+minimumGreenTimeS1S2 && cycle_seconds < yellowS3_startTime){
+      if (cycle_seconds>=minimumTimeForButtonToChangeLights && cycle_seconds < yellowS3_startTime){
       //timeSum=yellowS3_startTime-cycle_seconds;
         cycle_seconds=yellowS3_startTime;
       }
